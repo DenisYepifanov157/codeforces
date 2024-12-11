@@ -1,0 +1,27 @@
+import math
+
+# Ввод данных
+a = int(input())  # длина стены
+h = int(input())  # высота стены
+k = int(input())  # период рисунка
+m = int(input())  # ширина рулона
+s = int(input())  # длина рулона
+
+# Наименьшее общее кратное (НОК)
+def lcm(x, y):
+    return x * y // math.gcd(x, y)
+
+# Эффективная ширина полосы с учётом рисунка
+effective_width = lcm(m, k)
+
+# Количество полос для покрытия стены
+strips_for_wall = math.ceil(a / effective_width)
+
+# Количество полос из одного рулона
+strips_per_roll = s // h
+
+# Количество рулонов
+rolls_needed = math.ceil(strips_for_wall / strips_per_roll)
+
+# Вывод результата
+print(rolls_needed)
